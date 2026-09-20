@@ -1,12 +1,14 @@
 :root {
-  --ink: #1c2525;
-  --muted: #65716e;
-  --paper: #f5f2eb;
-  --white: #fffdf9;
-  --line: #d9ddd5;
-  --accent: #e47843;
-  --accent-dark: #be542e;
-  --teal: #194847;
+  --ink: #092d4d;
+  --muted: #607383;
+  --paper: #f4f8fb;
+  --white: #ffffff;
+  --line: #d5e1e8;
+  --accent: #6bc90e;
+  --accent-dark: #4e9807;
+  --teal: #092d4d;
+  --sky: #2198db;
+  --orange: #f28b00;
   --display: 'Manrope', sans-serif;
   --body: 'DM Sans', sans-serif;
 }
@@ -22,9 +24,9 @@ button, input, textarea { font: inherit; }
 .brand-mark { display: grid; place-items: center; width: 36px; height: 36px; background: var(--accent); color: var(--white); font: 800 12px/1 var(--display); letter-spacing: -0.08em; }
 .brand-name { font-size: 15px; }
 .brand-name small { color: var(--muted); font-size: 10px; letter-spacing: .06em; margin-left: 3px; }
-.site-nav { display: flex; align-items: center; gap: 36px; color: #53605d; font-size: 13px; font-weight: 600; }
+.site-nav { display: flex; align-items: center; gap: 36px; color: #526b7c; font-size: 13px; font-weight: 600; }
 .site-nav a:hover, .text-link:hover { color: var(--accent-dark); }
-.nav-cta { color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 5px; }
+.nav-cta { color: var(--ink); border-bottom: 1px solid var(--accent); padding-bottom: 5px; }
 .nav-cta span, .text-link span, .button span { color: var(--accent); margin-left: 10px; font-size: 17px; }
 .menu-toggle { display: none; background: none; border: 0; padding: 10px; }
 .menu-toggle span { display: block; width: 24px; height: 1px; background: var(--ink); margin: 6px; }
@@ -39,23 +41,24 @@ h1 em, h2 em { color: var(--accent); font-style: normal; }
 .hero-actions { display: flex; align-items: center; gap: 27px; margin-top: 35px; }
 .button { display: inline-flex; align-items: center; justify-content: center; border: 0; padding: 16px 21px; cursor: pointer; font-weight: 700; font-size: 13px; transition: transform .2s ease, background .2s ease; }
 .button:hover { transform: translateY(-2px); }
-.button-primary { background: var(--teal); color: var(--white); }
+.button-primary { background: var(--sky); color: var(--white); }
 .button-primary span, .button-dark span { color: var(--accent); }
 .text-link { font-size: 13px; font-weight: 700; border-bottom: 1px solid var(--line); padding-bottom: 5px; }
 .hero-note { display: flex; align-items: center; gap: 9px; color: var(--muted); margin-top: 44px; font-size: 12px; }
-.note-dot { display: block; width: 8px; height: 8px; background: #90b77f; border-radius: 50%; box-shadow: 0 0 0 5px #e2edde; }
+.note-dot { display: block; width: 8px; height: 8px; background: var(--accent); border-radius: 50%; box-shadow: 0 0 0 5px #e4f3d6; }
 .hero-visual { position: relative; min-height: 510px; }
-.image-frame, .process-photo { background: linear-gradient(90deg, rgba(28,37,37,.05), rgba(28,37,37,.08)), url('images/IMG_1780431388006.jpg') center/cover; }
+.image-frame { background: linear-gradient(90deg, rgba(28,37,37,.05), rgba(28,37,37,.08)), url('images/lblogo.png') center/cover; }
+.process-photo { background: linear-gradient(90deg, rgba(28,37,37,.05), rgba(28,37,37,.08)), url('images/IMG_1780431388006.jpg') center/cover; }
 .image-frame { height: 510px; margin-right: 45px; }
 .hero-visual:after { content: ''; position: absolute; top: -20px; right: 0; width: 118px; height: 118px; border: 1px solid var(--accent); z-index: -1; }
-.visual-stamp { position: absolute; right: -1px; bottom: 58px; width: 115px; height: 115px; background: var(--accent); color: var(--white); display: flex; flex-direction: column; justify-content: center; padding: 20px; }
+.visual-stamp { position: absolute; right: -1px; bottom: 58px; width: 115px; height: 115px; background: var(--orange); color: var(--white); display: flex; flex-direction: column; justify-content: center; padding: 20px; }
 .visual-stamp strong { font: 800 38px/1 var(--display); letter-spacing: -.08em; }
 .visual-stamp span { font-size: 10px; line-height: 1.3; margin-top: 6px; }
 .visual-caption { position: absolute; bottom: -25px; left: -45px; display: flex; gap: 12px; align-items: flex-start; font-size: 11px; font-weight: 700; line-height: 1.3; }
 .caption-rule { width: 32px; height: 1px; background: var(--accent); margin-top: 6px; }
 .trust-bar { background: var(--teal); color: var(--white); }
 .trust-inner { min-height: 105px; display: flex; align-items: center; justify-content: space-between; gap: 35px; }
-.trust-inner p { margin: 0; color: #bad0c7; font-size: 13px; }
+.trust-inner p { margin: 0; color: #c6ddec; font-size: 13px; }
 .trust-points { display: flex; gap: 43px; font-size: 12px; font-weight: 600; }
 .trust-points b { color: var(--accent); margin-right: 9px; font-size: 11px; }
 .services { padding-top: 135px; padding-bottom: 150px; }
@@ -65,10 +68,10 @@ h2 { font-size: clamp(2.6rem, 5vw, 4.7rem); margin-bottom: 0; }
 .services-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); }
 .service-card { min-height: 330px; border-right: 1px solid var(--line); padding: 32px 28px 23px 0; margin-right: 28px; display: flex; flex-direction: column; }
 .service-card:last-child { border-right: 0; margin-right: 0; }
-.service-card-featured { color: var(--white); background: var(--accent); margin-top: -1px; padding: 32px 28px 23px; }
-.service-card-featured .service-number, .service-card-featured p, .service-card-featured a { color: #fff1e9; }
+.service-card-featured { color: var(--ink); background: var(--accent); margin-top: -1px; padding: 32px 28px 23px; }
+.service-card-featured .service-number, .service-card-featured p, .service-card-featured a { color: #214b2e; }
 .service-icon { color: var(--accent); font-size: 29px; height: 52px; }
-.service-card-featured .service-icon { color: var(--white); }
+.service-card-featured .service-icon { color: var(--ink); }
 .service-number { color: var(--accent-dark); font-size: 10px; letter-spacing: .09em; font-weight: 700; margin-bottom: 23px; }
 .service-card h3 { font: 800 21px/1.1 var(--display); letter-spacing: -.055em; margin-bottom: 12px; }
 .service-card p:not(.service-number) { color: var(--muted); font-size: 13px; line-height: 1.6; }

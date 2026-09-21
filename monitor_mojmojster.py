@@ -10,6 +10,14 @@ from bs4 import BeautifulSoup
 SOURCE_URL = "https://www.mojmojster.net/povprasevanja/montaza_pohistva"
 STATE_FILE = Path("seen-listings.json")
 WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
+REQUEST_HEADERS = {
+    "User-Agent": (
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+        "AppleWebKit/605.1.15 Version/17.0 Safari/605.1.15"
+    ),
+    "Accept-Language": "sl-SI,sl;q=0.9,en;q=0.8",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+}
 
 def clean_text(value: str) -> str:
     return re.sub(r"\s+", " ", value).strip()
@@ -95,11 +103,7 @@ def send_to_discord(listings: list[dict[str, str]]) -> None:
 
 
 def main() -> None:
-    response = requests.get(
-        SOURCE_URL,
-        headers={"User-Agent": "Leonard-Montaze-Monitor/1.0"},
-        timeout=20,
-    )
+    response = requests.get(SOURCE_URL, headers=REQUEST_HEADERS, timeout=20)
     response.raise_for_status()
 
     listings = parse_listings(response.text)

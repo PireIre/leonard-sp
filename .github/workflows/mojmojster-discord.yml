@@ -1,0 +1,38 @@
+name: New furniture assembly leads
+
+on:
+  schedule:
+    # GitHub Actions uses UTC. These run at roughly 08:00 and 18:00 in Slovenia.
+    - cron: "0 7,17 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  check-listings:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install monitor dependencies
+        run: pip install -r requirements-monitor.txt
+
+      - name: Check MojMojster and notify Discord
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+        run: python monitor_mojmojster.py
+
+      - name: Save seen listing state
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add seen-listings.json
+          git diff --cached --quiet || git commit -m "Update seen MojMojster listings"
+          git push
